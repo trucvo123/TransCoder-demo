@@ -281,6 +281,7 @@ def check_data_params(params):
 
     # denoising auto-encoder steps
     params.ae_steps = [s for s in params.ae_steps.split(',') if len(s) > 0]
+    print(params.ae_steps)
     assert all([lang in params.langs for lang in params.ae_steps])
     assert len(params.ae_steps) == len(set(params.ae_steps))
     assert len(params.ae_steps) == 0 or not params.encoder_only
