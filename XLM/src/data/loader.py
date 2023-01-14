@@ -245,6 +245,7 @@ def check_data_params(params):
 
     # check languages
     params.langs = params.lgs.split('-') if params.lgs != 'debug' else ['en']
+    print("params.langs: ", params.langs)
     assert len(params.langs) == len(set(params.langs)) >= 1
     # assert sorted(params.langs) == params.langs
     params.id2lang = {k: v for k, v in enumerate(sorted(params.langs))}
@@ -281,8 +282,8 @@ def check_data_params(params):
 
     # denoising auto-encoder steps
     params.ae_steps = [s for s in params.ae_steps.split(',') if len(s) > 0]
-    print(params.ae_steps)
-    print([lang in params.langs for lang in params.ae_steps])
+    print("params.ae_steps: ", params.ae_steps)
+    print("[lang in params.langs for lang in params.ae_steps]: ", [lang in params.langs for lang in params.ae_steps])
     assert all([lang in params.langs for lang in params.ae_steps])
     assert len(params.ae_steps) == len(set(params.ae_steps))
     assert len(params.ae_steps) == 0 or not params.encoder_only
