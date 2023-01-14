@@ -79,6 +79,8 @@ def check_model_params(params):
         else:
             s = params.reload_model.split(',')
             assert len(s) == 2
+            print("s: ", s )
+            print("os.path.isfile(x) for x in s: ", (os.path.isfile(x) for x in s))
             assert all([x == '' or os.path.isfile(x) for x in s])
 
     assert not (params.beam_size > 1 and params.number_samples >
