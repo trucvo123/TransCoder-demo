@@ -80,7 +80,8 @@ def check_model_params(params):
             s = params.reload_model.split(',')
             assert len(s) == 2
             print("s: ", s )
-            print("os.path.isfile(x) for x in s: ", (os.path.isfile(x) for x in s))
+            print("os.path.isfile(x) for x1 in s: ", (os.path.isfile(s[0])))
+            print("os.path.isfile(x) for x2 in s: ", (os.path.isfile(s[1])))
             assert all([x == '' or os.path.isfile(x) for x in s])
 
     assert not (params.beam_size > 1 and params.number_samples >
